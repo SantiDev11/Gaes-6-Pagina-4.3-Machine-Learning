@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <!-- Metadatos básicos -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#00324D">
+  <meta name="description" content="4.3. Introducción al aprendizaje automático (machine learning). GAES 6 - SENA C.S.E.T. Bucaramanga.">
+  <title>4.3 Machine Learning · GAES 6</title>
+  <!-- Favicon: logo del SENA (64 px para la pestaña, 180 px para iPhone/iPad) -->
+  <link rel="icon" type="image/png" sizes="64x64" href="img/favicon-sena.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+  <!-- Hoja de estilos y script (defer: se ejecuta al terminar de leer el HTML) -->
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- Enlace para saltar el menú (accesibilidad con teclado) -->
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <!-- ===== ENCABEZADO: logo + menú ===== -->
+  <header class="sitio">
+    <div class="sitio__barra contenedor">
+      <a class="sitio__marca" href="#portada">
+        <img class="sitio__logo-sena" src="img/logo-sena.png" alt="SENA" width="44" height="43">
+        <span class="sitio__separador" aria-hidden="true"></span>
+        <span>4.3 <strong>Machine learning</strong></span>
+      </a>
+
+      <!-- Botón de menú para celular (lo controla main.js) -->
+      <button class="sitio__menu-btn" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="sitio__nav" id="menu-principal" aria-label="Menú principal">
+        <ul>
+          <li><a href="#concepto">Concepto</a></li>
+          <li><a href="#tipos">Tipos de aprendizaje</a></li>
+          <li><a href="#aplicaciones">Aplicaciones</a></li>
+          <li><a href="#equipo">Equipo</a></li>
+        </ul>
+        <a class="boton boton--primario boton--chico" href="#concepto">Comenzar</a>
+      </nav>
+    </div>
+    <span class="sitio__progreso" aria-hidden="true"></span>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ===== BANNER PRINCIPAL (HERO) ===== -->
+    <section class="hero" id="portada" aria-labelledby="titulo-principal">
+      <!-- Lienzo decorativo: puntos de datos que se agrupan (lo dibuja main.js) -->
+      <canvas class="portada__datos" aria-hidden="true"></canvas>
+
+      <div class="hero__contenido contenedor">
+        <div class="hero__texto">
+          <p class="hero__chip" data-paso style="--paso:0"><span aria-hidden="true"></span>Tema 4.3</p>
+          <h1 class="hero__titulo" id="titulo-principal" data-paso style="--paso:1">
+            Introducción al aprendizaje automático
+            <span>(machine learning)</span>
+          </h1>
+          <div class="hero__acciones" data-paso style="--paso:2">
+            <a class="boton boton--primario" href="#concepto">
+              Comenzar
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="boton boton--contorno" href="#tipos">Tipos de aprendizaje</a>
+          </div>
+          <p class="hero__creditos" data-paso style="--paso:3">GAES 6 &nbsp;|&nbsp; SENA C.S.E.T. Bucaramanga</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ACCESOS RÁPIDOS: los tres temas ===== -->
+    <!-- Empieza con .activa: se anima al cargar, junto con el banner -->
+    <section class="temas activa" aria-label="Temas">
+      <div class="temas__lista contenedor">
+        <a class="tema" href="#concepto" data-paso style="--paso:0">
+          <span class="tema__icono" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="7" cy="8" r="2.5"/><circle cx="16" cy="6" r="2.5"/><circle cx="12" cy="17" r="2.5"/><path d="M9 9l2 6M14 7.5l-1.5 7"/></svg>
+          </span>
+          <span class="tema__num">1</span>
+          <span class="tema__titulo">Concepto y diferenciación</span>
+        </a>
+        <a class="tema" href="#tipos" data-paso style="--paso:1">
+          <span class="tema__icono" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14l1.2 2.4 2.6.4-1.9 1.8.5 2.6-2.4-1.3-2.4 1.3.5-2.6-1.9-1.8 2.6-.4z"/></svg>
+          </span>
+          <span class="tema__num">2</span>
+          <span class="tema__titulo">Tipos de aprendizaje</span>
+        </a>
+        <a class="tema" href="#aplicaciones" data-paso style="--paso:2">
+          <span class="tema__icono" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="4"/></svg>
+          </span>
+          <span class="tema__num">3</span>
+          <span class="tema__titulo">Aplicaciones y desarrollos</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== SECCIÓN 1: Concepto y diferenciación ===== -->
+    <section class="seccion seccion--blanca" id="concepto" aria-labelledby="titulo-concepto">
+      <div class="contenedor">
+        <header class="seccion__cabecera">
+          <p class="seccion__numero" data-paso style="--paso:0">1</p>
+          <h2 class="seccion__titulo" id="titulo-concepto" data-paso style="--paso:1">Concepto y diferenciación</h2>
+        </header>
+
+        <article class="concepto">
+          <p class="concepto__definicion" data-paso style="--paso:2">El aprendizaje automático (machine learning) es una disciplina dentro de la inteligencia artificial que desarrolla sistemas capaces de aprender de los datos y mejorar su desempeño con el tiempo sin programación explícita.</p>
+          <p class="concepto__detalle" data-paso style="--paso:3">A diferencia de los algoritmos tradicionales que siguen instrucciones fijas, estos modelos detectan patrones, hacen inferencias y toman decisiones a partir de grandes volúmenes de datos, adaptándose a tareas complejas y cambiantes.</p>
+        </article>
+
+        <!-- Comparación: algoritmos tradicionales vs. machine learning -->
+        <div class="contraste">
+          <div class="contraste__lado contraste__lado--tradicional" data-paso style="--paso:4">
+            <svg class="contraste__figura" viewBox="0 0 320 140" aria-hidden="true">
+              <g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+                <rect x="12" y="54" width="32" height="32" rx="6"/>
+                <path class="trad__ruta" d="M44 70h36V30h60v80h60V70h76"/>
+                <rect x="276" y="54" width="32" height="32" rx="6"/>
+              </g>
+            </svg>
+            <h3>Algoritmos tradicionales</h3>
+            <p>Siguen instrucciones fijas.</p>
+          </div>
+
+          <span class="contraste__vs" aria-hidden="true">vs</span>
+
+          <div class="contraste__lado contraste__lado--ml" data-paso style="--paso:5">
+            <svg class="contraste__figura" viewBox="0 0 320 140" aria-hidden="true">
+              <g fill="#39A900">
+                <circle class="brote" style="--i:0" cx="20" cy="112" r="5"/><circle class="brote" style="--i:1" cx="38" cy="124" r="4"/>
+                <circle class="brote" style="--i:2" cx="55" cy="104" r="5"/><circle class="brote" style="--i:3" cx="72" cy="112" r="4"/>
+                <circle class="brote" style="--i:4" cx="88" cy="86" r="5"/><circle class="brote" style="--i:5" cx="104" cy="72" r="4"/>
+                <circle class="brote" style="--i:6" cx="118" cy="58" r="5"/><circle class="brote" style="--i:7" cx="134" cy="66" r="4"/>
+                <circle class="brote" style="--i:8" cx="150" cy="46" r="5"/><circle class="brote" style="--i:9" cx="168" cy="62" r="4"/>
+                <circle class="brote" style="--i:10" cx="186" cy="68" r="5"/><circle class="brote" style="--i:11" cx="204" cy="82" r="4"/>
+                <circle class="brote" style="--i:12" cx="222" cy="74" r="5"/><circle class="brote" style="--i:13" cx="240" cy="86" r="4"/>
+                <circle class="brote" style="--i:14" cx="262" cy="70" r="5"/><circle class="brote" style="--i:15" cx="280" cy="58" r="4"/>
+                <circle class="brote" style="--i:16" cx="296" cy="36" r="5"/><circle class="brote" style="--i:17" cx="306" cy="46" r="4"/>
+              </g>
+              <path class="ml__curva" d="M10 120C70 115 100 40 160 55S260 100 310 25" fill="none" stroke="#50E5F9" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <h3>Machine learning</h3>
+            <p>Detectan patrones, hacen inferencias y toman decisiones a partir de grandes volúmenes de datos, adaptándose a tareas complejas y cambiantes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECCIÓN 2: Tipos de aprendizaje (pestañas WAI-ARIA) ===== -->
+    <section class="seccion seccion--oscura" id="tipos" aria-labelledby="titulo-tipos">
+      <div class="contenedor">
+        <header class="seccion__cabecera">
+          <p class="seccion__numero" data-paso style="--paso:0">2</p>
+          <h2 class="seccion__titulo" id="titulo-tipos" data-paso style="--paso:1">Tipos de aprendizaje</h2>
+        </header>
+
+        <div class="tipos">
+          <!-- Lista vertical de pestañas: se recorre con ↑ ↓ -->
+          <div class="pestanas" role="tablist" aria-label="Tipos de aprendizaje" aria-orientation="vertical" data-paso style="--paso:2">
+            <button class="pestana" type="button" role="tab" id="tab-supervisado" aria-selected="true" aria-controls="panel-supervisado" tabindex="0">
+              <span class="pestana__icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24"><circle cx="8" cy="9" r="4" fill="#39A900"/><rect x="13" y="12" width="8" height="8" rx="2" fill="#50E5F9"/></svg>
+              </span>
+              <span>Aprendizaje supervisado</span>
+            </button>
+            <button class="pestana" type="button" role="tab" id="tab-no-supervisado" aria-selected="false" aria-controls="panel-no-supervisado" tabindex="-1">
+              <span class="pestana__icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24"><circle cx="7" cy="8" r="3.5" fill="#39A900"/><circle cx="17" cy="9" r="3.5" fill="#50E5F9"/><circle cx="11" cy="17" r="3.5" fill="#FDC300"/></svg>
+              </span>
+              <span>Aprendizaje no supervisado</span>
+            </button>
+            <button class="pestana" type="button" role="tab" id="tab-refuerzo" aria-selected="false" aria-controls="panel-refuerzo" tabindex="-1">
+              <span class="pestana__icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24"><path d="M15 3l1.9 3.9 4.3.6-3.1 3 .7 4.3L15 12.8l-3.8 2 .7-4.3-3.1-3 4.3-.6z" fill="#FDC300"/><circle cx="6" cy="18" r="3.5" fill="#39A900"/></svg>
+              </span>
+              <span>Aprendizaje por refuerzo</span>
+            </button>
+          </div>
+
+          <div class="tipos__paneles" data-paso style="--paso:3">
+            <!-- Panel 1: supervisado -->
+            <div class="panel" role="tabpanel" id="panel-supervisado" aria-labelledby="tab-supervisado" tabindex="0">
+              <div class="panel__figura">
+                <!-- Datos etiquetados (forma = etiqueta), frontera aprendida y un dato nuevo clasificado -->
+                <svg viewBox="0 0 400 260" aria-hidden="true">
+                  <polygon class="sup__region" points="0,0 365,0 34.6,260 0,260" fill="#39A900" fill-opacity=".12"/>
+                  <polygon class="sup__region" points="365,0 400,0 400,260 34.6,260" fill="#50E5F9" fill-opacity=".1"/>
+                  <line class="sup__frontera" x1="34.6" y1="260" x2="365" y2="0" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+                  <g fill="#39A900">
+                    <circle class="sup__punto" style="--i:0" cx="70" cy="60" r="9"/>
+                    <circle class="sup__punto" style="--i:1" cx="110" cy="40" r="9"/>
+                    <circle class="sup__punto" style="--i:2" cx="90" cy="110" r="9"/>
+                    <circle class="sup__punto" style="--i:3" cx="140" cy="80" r="9"/>
+                    <circle class="sup__punto" style="--i:4" cx="60" cy="150" r="9"/>
+                    <circle class="sup__punto" style="--i:5" cx="170" cy="45" r="9"/>
+                    <circle class="sup__punto" style="--i:6" cx="120" cy="140" r="9"/>
+                  </g>
+                  <g fill="#50E5F9">
+                    <rect class="sup__punto" style="--i:1" x="242" y="192" width="16" height="16" rx="3"/>
+                    <rect class="sup__punto" style="--i:2" x="292" y="162" width="16" height="16" rx="3"/>
+                    <rect class="sup__punto" style="--i:3" x="312" y="212" width="16" height="16" rx="3"/>
+                    <rect class="sup__punto" style="--i:4" x="212" y="222" width="16" height="16" rx="3"/>
+                    <rect class="sup__punto" style="--i:5" x="272" y="112" width="16" height="16" rx="3"/>
+                    <rect class="sup__punto" style="--i:6" x="332" y="142" width="16" height="16" rx="3"/>
+                    <rect class="sup__punto" style="--i:7" x="192" y="172" width="16" height="16" rx="3"/>
+                  </g>
+                  <circle class="sup__pulso" cx="195" cy="85" r="11" fill="none" stroke="#39A900" stroke-width="2"/>
+                  <circle class="sup__nuevo" cx="195" cy="85" r="11" stroke="#fff" stroke-width="2.5"/>
+                </svg>
+                <button class="repetir" type="button" aria-label="Repetir animación">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+              <p class="panel__texto"><strong>Datos etiquetados:</strong> entradas con salidas esperadas para predecir resultados similares con nuevos datos.</p>
+            </div>
+
+            <!-- Panel 2: no supervisado -->
+            <div class="panel" role="tabpanel" id="panel-no-supervisado" aria-labelledby="tab-no-supervisado" tabindex="0" hidden>
+              <div class="panel__figura">
+                <!-- Datos sin etiqueta (grises) que se agrupan por similitud -->
+                <svg viewBox="0 0 400 260" aria-hidden="true">
+                  <ellipse class="nosup__grupo" cx="104" cy="86" rx="52" ry="42" stroke="#39A900"/>
+                  <ellipse class="nosup__grupo" cx="295" cy="96" rx="52" ry="42" stroke="#50E5F9"/>
+                  <ellipse class="nosup__grupo" cx="203" cy="196" rx="52" ry="42" stroke="#FDC300"/>
+                  <circle class="nosup__punto" style="--dx:215px;--dy:150px;--c:#39A900" cx="85" cy="70" r="8"/>
+                  <circle class="nosup__punto" style="--dx:95px;--dy:68px;--c:#39A900" cx="115" cy="62" r="8"/>
+                  <circle class="nosup__punto" style="--dx:250px;--dy:-55px;--c:#39A900" cx="100" cy="95" r="8"/>
+                  <circle class="nosup__punto" style="--dx:-70px;--dy:130px;--c:#39A900" cx="130" cy="90" r="8"/>
+                  <circle class="nosup__punto" style="--dx:170px;--dy:65px;--c:#39A900" cx="80" cy="105" r="8"/>
+                  <circle class="nosup__punto" style="--dx:-220px;--dy:-35px;--c:#50E5F9" cx="280" cy="75" r="8"/>
+                  <circle class="nosup__punto" style="--dx:-160px;--dy:145px;--c:#50E5F9" cx="310" cy="85" r="8"/>
+                  <circle class="nosup__punto" style="--dx:-255px;--dy:40px;--c:#50E5F9" cx="295" cy="110" r="8"/>
+                  <circle class="nosup__punto" style="--dx:-90px;--dy:-40px;--c:#50E5F9" cx="270" cy="100" r="8"/>
+                  <circle class="nosup__punto" style="--dx:-200px;--dy:85px;--c:#50E5F9" cx="320" cy="115" r="8"/>
+                  <circle class="nosup__punto" style="--dx:150px;--dy:-155px;--c:#FDC300" cx="180" cy="185" r="8"/>
+                  <circle class="nosup__punto" style="--dx:-120px;--dy:-135px;--c:#FDC300" cx="210" cy="175" r="8"/>
+                  <circle class="nosup__punto" style="--dx:145px;--dy:-45px;--c:#FDC300" cx="225" cy="205" r="8"/>
+                  <circle class="nosup__punto" style="--dx:-160px;--dy:-125px;--c:#FDC300" cx="190" cy="215" r="8"/>
+                  <circle class="nosup__punto" style="--dx:45px;--dy:-155px;--c:#FDC300" cx="205" cy="195" r="8"/>
+                </svg>
+                <button class="repetir" type="button" aria-label="Repetir animación">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+              <p class="panel__texto"><strong>Datos sin etiquetas:</strong> busca estructuras o agrupaciones como patrones ocultos o segmentos similares.</p>
+            </div>
+
+            <!-- Panel 3: por refuerzo -->
+            <div class="panel" role="tabpanel" id="panel-refuerzo" aria-labelledby="tab-refuerzo" tabindex="0" hidden>
+              <div class="panel__figura">
+                <!-- Un agente explora: choca con una penalización y luego llega a la recompensa -->
+                <svg viewBox="0 0 400 260" aria-hidden="true">
+                  <g stroke="rgba(255,255,255,.14)" stroke-width="1.5">
+                    <path d="M50 30h300M50 80h300M50 130h300M50 180h300M50 230h300"/>
+                    <path d="M50 30v200M100 30v200M150 30v200M200 30v200M250 30v200M300 30v200M350 30v200"/>
+                  </g>
+                  <!-- Celdas de penalización -->
+                  <rect class="ref__castigo ref__castigo--golpe" x="152" y="182" width="46" height="46" rx="6" fill="#F26B5B" fill-opacity=".25"/>
+                  <rect class="ref__castigo" x="252" y="132" width="46" height="46" rx="6" fill="#F26B5B" fill-opacity=".25"/>
+                  <g stroke="#F26B5B" stroke-width="3" stroke-linecap="round">
+                    <path d="M166 196l18 18M184 196l-18 18"/>
+                    <path d="M266 146l18 18M284 146l-18 18"/>
+                  </g>
+                  <!-- Camino óptimo que se refuerza al final -->
+                  <polyline class="ref__rastro" points="75,205 75,155 225,155 225,105 325,105 325,55" fill="none" stroke="#39A900" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="400"/>
+                  <!-- Agente (va antes de la meta para que la estrella quede encima al llegar) -->
+                  <circle class="ref__agente" cx="75" cy="205" r="13" fill="#fff" stroke="#39A900" stroke-width="5"/>
+                  <!-- Recompensa -->
+                  <circle class="ref__halo" cx="325" cy="55" r="18" fill="none" stroke="#FDC300" stroke-width="2"/>
+                  <path class="ref__meta" d="M325 39l4.7 9.6 10.6 1.5-7.7 7.5 1.8 10.6-9.4-5-9.4 5 1.8-10.6-7.7-7.5 10.6-1.5z" fill="#FDC300"/>
+                </svg>
+                <button class="repetir" type="button" aria-label="Repetir animación">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+              <p class="panel__texto"><strong>Interacción con el entorno:</strong> recibe recompensas o penalizaciones según sus decisiones, reforzando comportamientos óptimos con el tiempo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECCIÓN 3: Aplicaciones y desarrollos (filtro) ===== -->
+    <section class="seccion seccion--papel" id="aplicaciones" aria-labelledby="titulo-aplicaciones">
+      <div class="contenedor">
+        <header class="seccion__cabecera seccion__cabecera--con-controles">
+          <div class="seccion__cabecera">
+            <p class="seccion__numero" data-paso style="--paso:0">3</p>
+            <h2 class="seccion__titulo" id="titulo-aplicaciones" data-paso style="--paso:1">Aplicaciones y desarrollos</h2>
+          </div>
+
+          <div class="aplicaciones__controles" data-paso style="--paso:2">
+            <!-- Control segmentado: el indicador se desliza bajo el botón activo -->
+            <div class="filtros" role="group" aria-label="Filtrar por categoría">
+              <span class="filtros__indicador" aria-hidden="true"></span>
+              <button type="button" data-filtro="todas" aria-pressed="true">Todas</button>
+              <button type="button" data-filtro="actual" aria-pressed="false">Aplicaciones actuales</button>
+              <button type="button" data-filtro="avanzado" aria-pressed="false">Desarrollos avanzados</button>
+            </div>
+            <!-- Contador (región en vivo para lectores de pantalla) -->
+            <p class="contador" id="contador" aria-live="polite">Mostrando 7 elementos</p>
+          </div>
+        </header>
+
+        <!-- Cuadrícula de tarjetas -->
+        <div class="tarjetas" data-paso style="--paso:3">
+          <article class="tarjeta tarjeta--actual" data-categoria="actual">
+            <span class="tarjeta__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M10 8.5v5l4.5-2.5z"/><path d="M8 21h8"/></svg></span>
+            <span class="insignia">Actual</span>
+            <h3>Motores de recomendación de streaming</h3>
+          </article>
+          <article class="tarjeta tarjeta--actual" data-categoria="actual">
+            <span class="tarjeta__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <span class="insignia">Actual</span>
+            <h3>Detección de fraudes financieros</h3>
+          </article>
+          <article class="tarjeta tarjeta--actual" data-categoria="actual">
+            <span class="tarjeta__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span>
+            <span class="insignia">Actual</span>
+            <h3>Diagnóstico médico asistido por IA</h3>
+          </article>
+          <article class="tarjeta tarjeta--actual" data-categoria="actual">
+            <span class="tarjeta__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></svg></span>
+            <span class="insignia">Actual</span>
+            <h3>Asistentes virtuales</h3>
+          </article>
+          <article class="tarjeta tarjeta--actual" data-categoria="actual">
+            <span class="tarjeta__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M6 17v-4M11 17v-7M16 17v-5"/><path d="M4 9l6-4 4 3 6-4"/></svg></span>
+            <span class="insignia">Actual</span>
+            <h3>Predicción de demanda</h3>
+          </article>
+          <article class="tarjeta tarjeta--avanzado" data-categoria="avanzado">
+            <span class="tarjeta__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 8V5a2 2 0 0 1 2-2h3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M8 21H5a2 2 0 0 1-2-2v-3"/><path d="M9 9.5v1M15 9.5v1M9 15.5c1.7 1.3 4.3 1.3 6 0"/></svg></span>
+            <span class="insignia">Avanzado</span>
+            <h3>Reconocimiento facial</h3>
+          </article>
+          <!-- PENDIENTE: completar con el texto oficial del apartado 4.3 -->
+          <article class="tarjeta tarjeta--avanzado pendiente" data-categoria="avanzado">
+            <span class="tarjeta__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 17H4a1 1 0 0 1-1-1v-3l2-5a2 2 0 0 1 1.9-1.4h10.2A2 2 0 0 1 19 8l2 5v3a1 1 0 0 1-1 1h-1"/><path d="M9 17h6M3 13h18"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></span>
+            <span class="insignia">Avanzado</span>
+            <h3>Vehículos …</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECCIÓN 4: Equipo (ficha de la exposición) ===== -->
+    <section class="seccion seccion--blanca" id="equipo" aria-labelledby="titulo-equipo">
+      <div class="contenedor">
+        <header class="seccion__cabecera">
+          <p class="seccion__numero seccion__numero--icono" data-paso style="--paso:0" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17 14.5a5 5 0 0 1 4.5 5"/></svg>
+          </p>
+          <h2 class="seccion__titulo" id="titulo-equipo" data-paso style="--paso:1">GAES 6</h2>
+        </header>
+
+        <ul class="equipo" data-paso style="--paso:2">
+          <li class="persona"><span class="persona__iniciales" style="--c:#39A900" aria-hidden="true">KP</span><span class="persona__nombre">Kevin Santiago Pedraza</span></li>
+          <li class="persona"><span class="persona__iniciales" style="--c:#50E5F9" aria-hidden="true">JP</span><span class="persona__nombre">Jose Alejandro Perez</span></li>
+          <li class="persona"><span class="persona__iniciales" style="--c:#FDC300" aria-hidden="true">FC</span><span class="persona__nombre">Fabio Enrique Chamorro</span></li>
+          <li class="persona"><span class="persona__iniciales" style="--c:#00324D;--t:#fff" aria-hidden="true">JA</span><span class="persona__nombre">Juan Felipe Aguillon</span></li>
+        </ul>
+
+        <dl class="datos" data-paso style="--paso:3">
+          <div><dt>Instructor</dt><dd>JJ</dd></div>
+          <div><dt>Sede</dt><dd>SENA C.S.E.T. Bucaramanga</dd></div>
+          <div><dt>Programa</dt><dd>ADSO</dd></div>
+          <div><dt>Duración</dt><dd>60 minutos</dd></div>
+        </dl>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== PIE DE PÁGINA (columnas) ===== -->
+  <footer class="pie">
+    <div class="pie__columnas contenedor">
+      <div class="pie__col pie__col--marca">
+        <a class="sitio__marca" href="#portada">
+          <img class="sitio__logo-sena" src="img/logo-sena.png" alt="SENA" width="44" height="43">
+          <span class="sitio__separador" aria-hidden="true"></span>
+          <span>4.3 <strong>Machine learning</strong></span>
+        </a>
+        <p>4.3. Introducción al aprendizaje automático (machine learning)</p>
+      </div>
+
+      <nav class="pie__col" aria-label="Secciones">
+        <h2 class="pie__titulo">Secciones</h2>
+        <ul>
+          <li><a href="#concepto">Concepto y diferenciación</a></li>
+          <li><a href="#tipos">Tipos de aprendizaje</a></li>
+          <li><a href="#aplicaciones">Aplicaciones y desarrollos</a></li>
+          <li><a href="#equipo">Equipo</a></li>
+        </ul>
+      </nav>
+
+      <div class="pie__col">
+        <h2 class="pie__titulo">Exposición</h2>
+        <ul>
+          <li>GAES 6</li>
+          <li>Instructor JJ</li>
+          <li>SENA C.S.E.T. Bucaramanga</li>
+          <li>ADSO</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pie__final contenedor">
+      <p>GAES 6 &nbsp;|&nbsp; SENA C.S.E.T. Bucaramanga</p>
+      <a class="pie__arriba" href="#portada">
+        Volver arriba
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>
